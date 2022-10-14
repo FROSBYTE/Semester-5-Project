@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 1601367324}
   - component: {fileID: 1601367323}
   - component: {fileID: 1601367325}
+  - component: {fileID: 15153869}
   m_Layer: 7
   m_Name: Player
   m_TagString: Untagged
@@ -130,8 +131,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 10
+  m_AngularDrag: 2
+  m_GravityScale: 20
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -149,8 +150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d244e68d7bf82ac4384598802e548d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 7
-  jumpForce: 25
+  moveSpeed: 4
+  jumpForce: 35
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -171,3 +172,22 @@ CapsuleCollider2D:
   m_Offset: {x: 0.037004232, y: -0.38391757}
   m_Size: {x: 0.72335863, y: 1.1951609}
   m_Direction: 0
+--- !u!95 &15153869
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5221017298236210866}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6b776308233a385448a0111f7675e5e5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

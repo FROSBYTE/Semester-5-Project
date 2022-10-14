@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
+  - component: {fileID: 519420030}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -247,6 +248,25 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_Enabled: 1
+--- !u!114 &519420030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b794af5cda62de14a8a57ac89f67b9ef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerTransform: {fileID: 1993704254}
+  farBackground: {fileID: 270509996}
+  middleBackground: {fileID: 99542106}
+  cameraOffset: {x: 0, y: 0}
+  followSpeed: 0.3
+  minHeight: -1.4
+  maxHeight: 1.8
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -260,7 +280,7 @@ Camera:
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
-  m_FOVAxisMode: 0
+  m_FOVAxisMode: 1
   m_SensorSize: {x: 36, y: 24}
   m_LensShift: {x: 0, y: 0}
   m_FocalLength: 50
@@ -298,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 1.17, y: -1.4, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1187,6 +1207,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1993704254 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1074351879430849949, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
+  m_PrefabInstance: {fileID: 8742613716361167045}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8742613716361167045
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1194,22 +1219,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1601367323, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
-      propertyPath: jumpForce
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601367324, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601367324, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
-      propertyPath: m_LinearDrag
-      value: 2.52
-      objectReference: {fileID: 0}
-    - target: {fileID: 1601367324, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
-      propertyPath: m_GravityScale
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 1074351879430849949, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1220,7 +1229,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074351879430849949, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.45
+      value: -3.34
       objectReference: {fileID: 0}
     - target: {fileID: 1074351879430849949, guid: 9ec0d7f872a1ebc4ea616a22bd702903, type: 3}
       propertyPath: m_LocalPosition.z

@@ -8,42 +8,88 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpForce;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundPoint;
+    
 
     private Rigidbody2D rb;
+    private Vector2 velocity;
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
-    private bool isGrounded;
+    private bool isGround;
+    private bool jumpInput;
+    private bool doubleJump;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        Movement();
+        UpdateIsGrounded();
+        horizontalMovement();
         Jump();
+        animationController();
+
+        if(rb.velocity.x < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else
+        {
+            spriteRenderer.flipX = false;
+        }
     }
 
-    private void Movement()
+    private void animationController()
+    {
+        animator.SetBool("isGrounded", isGround);
+        animator.SetFloat("isMoving", Mathf.Abs(rb.velocity.x));
+    }
+
+    private void horizontalMovement()
     {
         float xInput = Input.GetAxisRaw("Horizontal") * moveSpeed;
-        rb.velocity = new Vector2(xInput, 0);
+        rb.velocity = new Vector2(xInput,rb.velocity.y);
+    }
+
+    private void UpdateIsGrounded()
+    {
+        isGround = Physics2D.OverlapCircle(groundPoint.position, 0.1f, groundLayer);
+
+        if (isGround)
+        {
+            doubleJump = true;
+        }
     }
 
     private void Jump()
     {
-        isGrounded = Physics2D.OverlapCircle(groundPoint.position, 0.1f, groundLayer);
+        if (Input.GetButtonDown("Jump"))
+        {
+            jumpInput = true;
+        }
 
-        float verticalInput = Input.GetAxisRaw("Jump");
+        if (jumpInput)
+        {
+            jumpInput = false;
 
-            if (isGrounded && verticalInput > 0)
+            if(isGround)
             {
-                rb.velocity = Vector2.up * jumpForce;
-
-            //rb.AddForce(Vector2.up * jumpForce);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
-    }
+            else
+            {
+                if (doubleJump)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    doubleJump = false;
+                }
+            }
+        }
+    } 
 }
-
