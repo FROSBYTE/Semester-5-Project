@@ -10,13 +10,14 @@ public class CameraControl : MonoBehaviour
     [SerializeField] Vector2 cameraOffset;
     [SerializeField] float followSpeed;
 
-    private float xlastPos;
+
     public float minHeight, maxHeight;
+    private Vector2 lastPos;
 
     // Start is called before the first frame update
     void Start()
     {
-        xlastPos = transform.position.x;
+        lastPos = transform.position;
     }
 
     // Update is called once per frame
@@ -31,17 +32,20 @@ public class CameraControl : MonoBehaviour
 
     private void CamProperties()
     {
+        Parrallax_clamp();
+
+        Vector2 move_amount = new Vector2 (transform.position.x - lastPos.x,transform.position.y - lastPos.y);
+        farBackground.position = farBackground.position + new Vector3(move_amount.x, move_amount.y, 0f);
+        middleBackground.position = middleBackground.position + new Vector3(move_amount.x,move_amount.y, 0f) * 0.5f;
+        lastPos = transform.position;
+
+    }
+
+    private void Parrallax_clamp()
+    {
         float offsetplayerpos = playerTransform.position.y - cameraOffset.y;
         float clampY = Mathf.Clamp(offsetplayerpos, minHeight, maxHeight);
         Vector3 targetpos = new Vector3(playerTransform.position.x - cameraOffset.x, clampY, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, targetpos, followSpeed);
-
-        float x_move_amount = transform.position.x - xlastPos;
-        farBackground.position = farBackground.position + new Vector3(x_move_amount, 0f, 0f);
-        middleBackground.position = middleBackground.position + new Vector3(x_move_amount * 0.5f, 0f, 0f);
-        xlastPos = transform.position.x;
- 
+        transform.position = Vector3.Lerp(transform.position, targetpos, followSpeed * Time.deltaTime);
     }
 }
-//transform.position = new Vector3(camTransform.position.x, transform.position.y, transform.position.z);
-// a+(b-a)*t;
