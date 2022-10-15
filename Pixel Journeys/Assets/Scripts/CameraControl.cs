@@ -32,16 +32,19 @@ public class CameraControl : MonoBehaviour
 
     private void CamProperties()
     {
-        Parrallax_clamp();
-
-        Vector2 move_amount = new Vector2 (transform.position.x - lastPos.x,transform.position.y - lastPos.y);
-        farBackground.position = farBackground.position + new Vector3(move_amount.x, move_amount.y, 0f);
-        middleBackground.position = middleBackground.position + new Vector3(move_amount.x,move_amount.y, 0f) * 0.5f;
-        lastPos = transform.position;
-
+        CamMovement();
+        Parallax();
     }
 
-    private void Parrallax_clamp()
+    private void Parallax()
+    {
+        Vector2 move_amount = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
+        farBackground.position = farBackground.position + new Vector3(move_amount.x, move_amount.y, 0f);
+        middleBackground.position = middleBackground.position + new Vector3(move_amount.x, move_amount.y, 0f) * 0.5f;
+        lastPos = transform.position;
+    }
+
+    private void CamMovement()
     {
         float offsetplayerpos = playerTransform.position.y - cameraOffset.y;
         float clampY = Mathf.Clamp(offsetplayerpos, minHeight, maxHeight);
