@@ -15,11 +15,13 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite heartEmpty;
     [SerializeField] Sprite heartHalf;
 
+    [SerializeField] Text gemText;
+
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        gemUpdate();
     }
     private void Awake()
     {
@@ -98,5 +100,9 @@ public class UIManager : MonoBehaviour
                 heart3.sprite = heartEmpty;
                 break;
         }
+    }
+    public void gemUpdate()
+    {
+        gemText.text =LevelManager.instance.gemsCollected.ToString();
     }
 }

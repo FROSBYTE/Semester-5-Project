@@ -9,6 +9,7 @@ public class HealthSystem : MonoBehaviour
 
     [SerializeField] int invincibleDelay;
     [SerializeField] SpriteRenderer sr;
+    [SerializeField] GameObject deathEffect;
 
     private float invincibilityCounter;
     
@@ -38,6 +39,7 @@ public class HealthSystem : MonoBehaviour
             if (currentHealth <= 0)
             {
             currentHealth = 0;
+            Instantiate(deathEffect,transform.position,transform.rotation);
             gameObject.SetActive(false);
             LevelManager.instance.RespawnPlayer();
             }
@@ -51,6 +53,15 @@ public class HealthSystem : MonoBehaviour
             
             UIManager.Instance.heartcountDisplay();
         }
+    }
+    public void addHealth()
+    {
+        currentHealth++;
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+        UIManager.Instance.heartcountDisplay();
     }
 }
 //if(invincibilityCounter <= 0)

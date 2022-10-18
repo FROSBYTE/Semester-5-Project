@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float knockbackLength;
     [SerializeField] float knockbackForceX;
     [SerializeField] float knockbackForceY;
+    
 
     private Rigidbody2D rb;
     private Vector2 velocity;
