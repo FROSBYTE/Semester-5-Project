@@ -151,12 +151,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d244e68d7bf82ac4384598802e548d2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 4
+  moveSpeed: 6
   jumpForce: 35
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundPoint: {fileID: 1473896046}
+  knockbackLength: 0.25
+  knockbackForceX: 4
+  knockbackForceY: 6
 --- !u!70 &1601367325
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -205,4 +208,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 0
-  maxHealth: 10
+  maxHealth: 6
+  invincibleDelay: 1
+  sr: {fileID: 8582112115101910336}

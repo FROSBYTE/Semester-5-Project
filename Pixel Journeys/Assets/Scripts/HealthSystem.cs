@@ -5,9 +5,13 @@ using UnityEngine;
 public class HealthSystem : MonoBehaviour
 {
     public static HealthSystem instance;
-
     public int currentHealth, maxHealth;
-    // Start is called before the first frame update
+
+    [SerializeField] int invincibleDelay;
+    [SerializeField] SpriteRenderer sr;
+
+    private float invincibilityCounter;
+    
     private void Awake()
     {
         instance = this;
@@ -20,16 +24,37 @@ public class HealthSystem : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (invincibilityCounter > 0)
+        {
+           invincibilityCounter -= Time.deltaTime;
+           
+        }
     }
     public void dealDamage()
     {
-        currentHealth--;
-
-        if (currentHealth <= 0)
+        if (invincibilityCounter <= 0)
         {
+            currentHealth--;
+            if (currentHealth <= 0)
+            {
+            currentHealth = 0;
             gameObject.SetActive(false);
+            LevelManager.instance.RespawnPlayer();
+            }
+
+            else
+            {
+            invincibilityCounter = invincibleDelay;
+            
+                PlayerMovement.instance.knockback();
+            }
+            
+            UIManager.Instance.heartcountDisplay();
         }
     }
-
 }
+//if(invincibilityCounter <= 0)
+//{
+//   sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
+//} 
+//sr.color = new Color(sr.color.r, sr.color.g, sr.color.b,0.5f);

@@ -28,6 +28,6 @@ public class DamageSystem : MonoBehaviour
         {
             HealthSystem.instance.dealDamage();
         }
-        UIManager.Instance.heartcountDisplay();
+        
     }
 }
