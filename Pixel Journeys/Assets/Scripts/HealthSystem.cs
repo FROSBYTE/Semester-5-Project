@@ -38,16 +38,15 @@ public class HealthSystem : MonoBehaviour
             currentHealth--;
             if (currentHealth <= 0)
             {
-            currentHealth = 0;
-            Instantiate(deathEffect,transform.position,transform.rotation);
-            gameObject.SetActive(false);
-            LevelManager.instance.RespawnPlayer();
+                currentHealth = 0;
+                Instantiate(deathEffect,transform.position,transform.rotation);
+                gameObject.SetActive(false);
+                LevelManager.instance.RespawnPlayer();
             }
 
             else
             {
-            invincibilityCounter = invincibleDelay;
-            
+                invincibilityCounter = invincibleDelay;
                 PlayerMovement.instance.knockback();
             }
             
@@ -61,7 +60,8 @@ public class HealthSystem : MonoBehaviour
         {
             currentHealth = maxHealth;
         }
-        UIManager.Instance.heartcountDisplay();
+
+       
     }
 }
 //if(invincibilityCounter <= 0)

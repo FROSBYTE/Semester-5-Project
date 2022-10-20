@@ -8,18 +8,18 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
-    [SerializeField] LayerMask groundLayer;
-    [SerializeField] Transform groundPoint;
     [SerializeField] float knockbackLength;
     [SerializeField] float knockbackForceX;
     [SerializeField] float knockbackForceY;
-    
+    [SerializeField] LayerMask groundLayer;
+    [SerializeField] Transform groundPoint;
 
+    private float knockbackCounter;
     private Rigidbody2D rb;
     private Vector2 velocity;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
-    private float knockbackCounter;
+    
 
     private bool isGround;
     private bool jumpInput;

@@ -10,8 +10,8 @@ public class CameraControl : MonoBehaviour
     [SerializeField] Vector2 cameraOffset;
     [SerializeField] float followSpeed;
 
-
     public float minHeight, maxHeight;
+
     private Vector2 lastPos;
 
     // Start is called before the first frame update

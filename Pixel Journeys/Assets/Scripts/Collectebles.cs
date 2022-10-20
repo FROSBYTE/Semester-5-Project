@@ -30,7 +30,6 @@ public class Collectebles : MonoBehaviour
                 Instantiate(pickupEffect, transform.position, transform.rotation);
 
                 UIManager.Instance.gemUpdate();
-                
             }
         }
 
@@ -41,6 +40,8 @@ public class Collectebles : MonoBehaviour
                 HealthSystem.instance.addHealth();
                 Destroy(gameObject);
                 Instantiate(pickupEffect, transform.position, transform.rotation);
+
+                UIManager.Instance.heartcountDisplay();
             }
         }
     }

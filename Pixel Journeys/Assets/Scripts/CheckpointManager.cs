@@ -5,9 +5,10 @@ using UnityEngine;
 public class CheckpointManager : MonoBehaviour
 {
     public static CheckpointManager instance;
+    public Vector3 spawnPoint;
 
     [SerializeField] Checkpoint[] checkpoints;
-    public Vector3 spawnPoint;
+    
     // Start is called before the first frame update
     private void Awake()
     {
@@ -17,7 +18,6 @@ public class CheckpointManager : MonoBehaviour
     {
         checkpoints = FindObjectsOfType<Checkpoint>();
         spawnPoint = PlayerMovement.instance.transform.position;
-
     }
     // Update is called once per frame
     void Update()
