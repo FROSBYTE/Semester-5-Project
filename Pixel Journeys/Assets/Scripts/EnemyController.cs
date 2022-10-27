@@ -8,38 +8,78 @@ public class EnemyController : MonoBehaviour
     [SerializeField] Rigidbody2D rb;
     [SerializeField] Transform rightPos;
     [SerializeField] Transform leftPos;
+    [SerializeField] float waitTime;
+    [SerializeField] float moveTime;
+    [SerializeField] SpriteRenderer spriteRenderer;
 
     public bool isRight;
+
+    private float waitCount;
+    private float moveCount;
+    private Animator animator;
     // Start is called before the first frame update
     void Start()
     {
+        animator = GetComponent<Animator>();
+
         rightPos.parent = null;
         leftPos.parent = null;
 
         isRight = true;
-    }
 
+        moveCount = moveTime;
+    }
     // Update is called once per frame
     void Update()
     {
-        if (isRight)
-        {
-            rb.velocity = new Vector2(moveSpeed,rb.velocity.y);
+        Patrolling();
+    }
 
-            if(transform.position.x > rightPos.position.x)
+    private void Patrolling()
+    {
+        if (moveCount > 0)
+        {
+            moveCount -= Time.deltaTime;
+
+            if (isRight)
             {
-                isRight = false;
+                rb.velocity = new Vector2(moveSpeed, rb.velocity.y);
+                spriteRenderer.flipX = true;
+
+                if (transform.position.x > rightPos.position.x)
+                {
+                    isRight = false;
+                }
             }
-           
+            else
+            {
+                rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+                spriteRenderer.flipX = false;
+
+                if (transform.position.x < leftPos.position.x)
+                {
+                    isRight = true;
+                }
+            }
+
+            if (moveCount <= 0)
+            {
+                waitCount = Random.Range(waitTime * 0.5f, waitTime * 1.25f);
+            }
+            animator.SetBool("isMoving", true);
+
         }
-        else
-        {
-            rb.velocity = new Vector2(-moveSpeed, rb.velocity.y);
+        else if (waitCount > 0)
 
-            if (transform.position.x < leftPos.position.x)
+        {
+            waitCount -= Time.deltaTime;
+            rb.velocity = new Vector2(0, rb.velocity.y);
+
+            if (waitCount <= 0)
             {
-                isRight = true;
+                moveCount = Random.Range(moveTime * 0.5f, moveTime * 1.25f);
             }
+            animator.SetBool("isMoving", false);
         }
     }
 }
