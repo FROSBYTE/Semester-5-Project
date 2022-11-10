@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraControl : MonoBehaviour
 {
+    public static CameraControl instance;
+
     [SerializeField] Transform playerTransform;
     [SerializeField] Transform farBackground;
     [SerializeField] Transform middleBackground;
@@ -14,7 +16,7 @@ public class CameraControl : MonoBehaviour
 
     private Vector2 lastPos;
 
-    // Start is called before the first frame update
+   
     void Start()
     {
         lastPos = transform.position;
@@ -27,6 +29,7 @@ public class CameraControl : MonoBehaviour
     }
     private void Awake()
     {
+        instance = this;
         cameraOffset = playerTransform.position - transform.position;
     }
 
@@ -40,7 +43,7 @@ public class CameraControl : MonoBehaviour
     {
         Vector2 move_amount = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
         farBackground.position = farBackground.position + new Vector3(move_amount.x, move_amount.y, 0f);
-        middleBackground.position = middleBackground.position + new Vector3(move_amount.x, move_amount.y, 0f) * 0.9f;
+        middleBackground.position = middleBackground.position + new Vector3(move_amount.x, move_amount.y, 0f) * 0.8f;
         lastPos = transform.position;
     }
 

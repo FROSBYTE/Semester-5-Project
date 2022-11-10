@@ -134,3 +134,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isGem: 1
   isHealth: 0
+  pickupEffect: {fileID: 502897933233762831, guid: 17f84d491df4e0440933558624013989, type: 3}
