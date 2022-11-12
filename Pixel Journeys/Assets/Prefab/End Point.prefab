@@ -72,5 +72,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gamewinPanel: {fileID: 0}
   player: {fileID: 0}
-  AutoBool: 0
   autoSpeed: 1

@@ -102,4 +102,4 @@ MonoBehaviour:
   cameraOffset: {x: 0, y: 0}
   followSpeed: 3
   minHeight: -40
-  maxHeight: 2.5
+  maxHeight: 5
