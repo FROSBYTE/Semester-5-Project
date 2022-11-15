@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
+    public Rigidbody2D rb;
 
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
@@ -13,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float knockbackForceY;
     [SerializeField] LayerMask groundLayer;
     [SerializeField] Transform groundPoint;
+    [SerializeField] float bounceForce;
 
     private float knockbackCounter;
-    private Rigidbody2D rb;
     private Vector2 velocity;
     private Animator animator;
     private SpriteRenderer spriteRenderer;
@@ -126,5 +127,21 @@ public class PlayerMovement : MonoBehaviour
     {
         knockbackCounter = knockbackLength;
         animator.SetTrigger("isHurt");
+    }
+    public void bounce()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, bounceForce);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Platform")
+        {
+            transform.parent = other.transform;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        transform.parent = null; 
     }
 }
