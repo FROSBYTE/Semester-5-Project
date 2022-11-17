@@ -50,6 +50,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: TileMap2
+    uniqueID: 3287938745
+    locked: 0
+  - name: TileMap1
+    uniqueID: 1907871293
+    locked: 0
   - name: World
     uniqueID: 1340318251
     locked: 0

@@ -6,7 +6,7 @@ public class MovingPlatform : MonoBehaviour
 {
     [SerializeField] Transform[] points;
     [SerializeField] float moveSpeed;
-    [SerializeField] int currenPoint;
+    [SerializeField] int currentPoint;
 
     [SerializeField] Transform platform;
     
@@ -19,15 +19,15 @@ public class MovingPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        platform.position = Vector3.MoveTowards(platform.position, points[currenPoint].position, moveSpeed * Time.deltaTime);
+        platform.position = Vector3.MoveTowards(platform.position, points[currentPoint].position, moveSpeed * Time.deltaTime);
         
-        if(Vector3.Distance(platform.position, points[currenPoint].position) < 0.05f)
+        if(Vector3.Distance(platform.position, points[currentPoint].position) < 0.05f)
         {
-            currenPoint++;
+            currentPoint++;
 
-            if(currenPoint >= points.Length)
+            if(currentPoint >= points.Length)
             {
-                currenPoint = 0;
+                currentPoint = 0;
             }
         }
     }

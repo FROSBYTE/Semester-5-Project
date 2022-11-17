@@ -43,7 +43,7 @@ public class CameraControl : MonoBehaviour
     {
         Vector2 move_amount = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
         farBackground.position = farBackground.position + new Vector3(move_amount.x, move_amount.y, 0f);
-        middleBackground.position = middleBackground.position + new Vector3(move_amount.x, move_amount.y, 0f) * 0.8f;
+        middleBackground.position = middleBackground.position + new Vector3(move_amount.x, move_amount.y, 0f) * 0.9f;
         lastPos = transform.position;
     }
 
