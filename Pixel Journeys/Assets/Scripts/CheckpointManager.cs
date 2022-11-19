@@ -16,13 +16,12 @@ public class CheckpointManager : MonoBehaviour
     }
     void Start()
     {
-        checkpoints = FindObjectsOfType<Checkpoint>();
         spawnPoint = PlayerMovement.instance.transform.position;
     }
     // Update is called once per frame
     void Update()
     {
-        
+        checkpoints = FindObjectsOfType<Checkpoint>();
     }
     public void deactivateCheckpoint()
     {

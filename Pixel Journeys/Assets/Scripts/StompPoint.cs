@@ -24,6 +24,8 @@ public class StompPoint : MonoBehaviour
             Destroy(other.transform.parent.gameObject);
             Instantiate(deathEfeect, other.transform.position, other.transform.rotation);
             PlayerMovement.instance.bounce();
-        }        
+            AudioManager.instance.audioSystem(3);
+        }
+        
     }
 }

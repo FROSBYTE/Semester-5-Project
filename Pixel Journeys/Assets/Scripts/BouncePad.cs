@@ -21,6 +21,7 @@ public class BouncePad : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         PlayerMovement.instance.rb.velocity = new Vector2(PlayerMovement.instance.rb.velocity.x, bounceForce);
+        AudioManager.instance.audioSystem(13);
         anim.SetTrigger("isBounce");
     }
 }

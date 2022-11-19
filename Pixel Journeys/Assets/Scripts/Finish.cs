@@ -33,6 +33,8 @@ public class Finish : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         gamewinPanel.SetActive(true);
+        AudioManager.instance.audioStopper(14);
+        AudioManager.instance.audioSystem(15);
         PlayerMovement.instance.gameObject.SetActive(false);
     }
 

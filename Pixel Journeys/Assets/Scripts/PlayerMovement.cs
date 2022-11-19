@@ -112,12 +112,14 @@ public class PlayerMovement : MonoBehaviour
             if(isGround)
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                AudioManager.instance.audioSystem(10);
             }
             else
             {
                 if (doubleJump)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                    AudioManager.instance.audioSystem(10);
                     doubleJump = false;
                 }
             }
@@ -131,6 +133,7 @@ public class PlayerMovement : MonoBehaviour
     public void bounce()
     {
         rb.velocity = new Vector2(rb.velocity.x, bounceForce);
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)

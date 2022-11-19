@@ -9,6 +9,7 @@ public class Checkpoint : MonoBehaviour
     [SerializeField] SpriteRenderer checpointSprite;
     [SerializeField] Sprite checkOn;
     [SerializeField] Sprite checkOff;
+    private bool Ischeckpoint;
 
     private void Awake()
     {
@@ -17,11 +18,12 @@ public class Checkpoint : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if(other.CompareTag("Player") && !Ischeckpoint)
         {
-            CheckpointManager.instance.deactivateCheckpoint();
             checpointSprite.sprite = checkOn;
+            Ischeckpoint= true;
             CheckpointManager.instance.spawnPoint = transform.position;
+            AudioManager.instance.audioSystem(12);
         }
     }
     public void resetCheckpoint()

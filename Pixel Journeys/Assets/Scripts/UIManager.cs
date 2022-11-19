@@ -100,6 +100,9 @@ public class UIManager : MonoBehaviour
                 heart3.sprite = heartEmpty;
                 break;
         }
+
+        
+
     }
     public void gemUpdate()
     {

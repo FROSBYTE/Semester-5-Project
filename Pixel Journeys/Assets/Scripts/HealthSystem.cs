@@ -36,12 +36,15 @@ public class HealthSystem : MonoBehaviour
         if (invincibilityCounter <= 0)
         {
             currentHealth--;
+            
+
             if (currentHealth <= 0)
             {
                 currentHealth = 0;
                 Instantiate(deathEffect,transform.position,transform.rotation);
                 gameObject.SetActive(false);
                 LevelManager.instance.RespawnPlayer();
+                AudioManager.instance.audioSystem(8);
             }
 
             else
@@ -49,7 +52,8 @@ public class HealthSystem : MonoBehaviour
                 invincibilityCounter = invincibleDelay;
                 PlayerMovement.instance.knockback();
             }
-            
+
+            AudioManager.instance.audioSystem(9);
             UIManager.Instance.heartcountDisplay();
         }
     }
@@ -64,8 +68,3 @@ public class HealthSystem : MonoBehaviour
        
     }
 }
-//if(invincibilityCounter <= 0)
-//{
-//   sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 1f);
-//} 
-//sr.color = new Color(sr.color.r, sr.color.g, sr.color.b,0.5f);

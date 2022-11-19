@@ -30,6 +30,7 @@ public class Collectebles : MonoBehaviour
                 Instantiate(pickupEffect, transform.position, transform.rotation);
 
                 UIManager.Instance.gemUpdate();
+                AudioManager.instance.audioSystem(6);
             }
         }
 
@@ -42,6 +43,7 @@ public class Collectebles : MonoBehaviour
                 Instantiate(pickupEffect, transform.position, transform.rotation);
 
                 UIManager.Instance.heartcountDisplay();
+                AudioManager.instance.audioSystem(7);
             }
         }
     }
