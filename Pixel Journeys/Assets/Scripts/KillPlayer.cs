@@ -9,6 +9,8 @@ public class KillPlayer : MonoBehaviour
         if(other.gameObject.tag == "Player")
         {
             LevelManager.instance.RespawnPlayer();
+            UIManager.Instance.fadeScreen();
+            //UIManager.Instance.unfadeScrren();
         }
     }
 }

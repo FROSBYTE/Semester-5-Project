@@ -26,5 +26,8 @@ public class Menu : MonoBehaviour
     {
         Application.Quit();
     }
-    
+    public void nextLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
 }

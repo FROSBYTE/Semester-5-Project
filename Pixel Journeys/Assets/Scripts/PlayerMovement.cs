@@ -6,6 +6,7 @@ public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement instance;
     public Rigidbody2D rb;
+    public bool isPrefinish;
 
     [SerializeField] float moveSpeed;
     [SerializeField] float jumpForce;
@@ -100,7 +101,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Jump") && !isPrefinish)
         {
             jumpInput = true;
         }
@@ -147,4 +148,5 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.parent = null; 
     }
+    
 }

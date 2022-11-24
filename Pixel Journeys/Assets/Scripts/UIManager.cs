@@ -14,14 +14,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] Sprite heartFull;
     [SerializeField] Sprite heartEmpty;
     [SerializeField] Sprite heartHalf;
+    [SerializeField] Image _fadeScreen;
+    [SerializeField] float fadeSpeed;
 
     [SerializeField] Text gemText;
+
+    public bool isturningBlack, isturningfromBlack;
 
     
     // Start is called before the first frame update
     void Start()
     {
         gemUpdate();
+        isturningfromBlack= true;
     }
     private void Awake()
     {
@@ -31,8 +36,30 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        FadeScreen();
     }
+
+    private void FadeScreen()
+    {
+        if (isturningBlack)
+        {
+            _fadeScreen.color = new Color(_fadeScreen.color.r, _fadeScreen.color.g, _fadeScreen.color.b, Mathf.MoveTowards(_fadeScreen.color.a, 1f, fadeSpeed * Time.deltaTime));
+            if (_fadeScreen.color.a == 1f)
+            {
+                isturningBlack = false;
+            }
+        }
+
+        if (isturningfromBlack)
+        {
+            _fadeScreen.color = new Color(_fadeScreen.color.r, _fadeScreen.color.g, _fadeScreen.color.b, Mathf.MoveTowards(_fadeScreen.color.a, 0f, fadeSpeed * Time.deltaTime));
+            if (_fadeScreen.color.a == 0f)
+            {
+                isturningfromBlack = false;
+            }
+        }
+    }
+
     public void heartcountDisplay()
     {
         switch (HealthSystem.instance.currentHealth)
@@ -107,5 +134,17 @@ public class UIManager : MonoBehaviour
     public void gemUpdate()
     {
         gemText.text =LevelManager.instance.gemsCollected.ToString();
+    }
+
+    public void fadeScreen()
+    {
+        isturningBlack = true;
+        isturningfromBlack = false;
+    }
+
+    public void unfadeScrren()
+    {
+        isturningfromBlack = true;
+        isturningBlack = false;
     }
 }

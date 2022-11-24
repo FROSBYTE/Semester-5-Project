@@ -43,6 +43,7 @@ public class HealthSystem : MonoBehaviour
                 currentHealth = 0;
                 Instantiate(deathEffect,transform.position,transform.rotation);
                 gameObject.SetActive(false);
+                UIManager.Instance.fadeScreen();
                 LevelManager.instance.RespawnPlayer();
                 AudioManager.instance.audioSystem(8);
             }
