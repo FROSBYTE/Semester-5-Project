@@ -20,14 +20,18 @@ public class Menu : MonoBehaviour
 
     public void playGame()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioManager.instance.audioSystem(17);
     }
     public void quitGame()
     {
         Application.Quit();
+        AudioManager.instance.audioSystem(17);
     }
     public void nextLevel()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        AudioManager.instance.audioSystem(17);
     }
+
 }

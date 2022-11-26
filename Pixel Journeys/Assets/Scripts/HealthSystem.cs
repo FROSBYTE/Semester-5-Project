@@ -6,6 +6,8 @@ public class HealthSystem : MonoBehaviour
 {
     public static HealthSystem instance;
     public int currentHealth, maxHealth;
+    public int respawnHealth = 2;
+    
 
     [SerializeField] int invincibleDelay;
     [SerializeField] SpriteRenderer sr;
@@ -64,8 +66,6 @@ public class HealthSystem : MonoBehaviour
         if (currentHealth > maxHealth)
         {
             currentHealth = maxHealth;
-        }
-
-       
+        }  
     }
 }

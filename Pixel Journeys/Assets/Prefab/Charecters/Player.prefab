@@ -74,7 +74,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.04864192, y: -0.19959617}
+  m_Offset: {x: -0.06399441, y: -0.21008265}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -85,7 +85,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.41794157, y: 0.12648058}
+  m_Size: {x: 0.60814714, y: 0.14745355}
   m_EdgeRadius: 0
 --- !u!1 &5221017298236210866
 GameObject:
@@ -164,7 +164,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 430049385
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 7815371044791450175, guid: d0ff653f4b4d3f14dab1926a9ed3efb6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -271,6 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 6
   maxHealth: 6
+  respawnHealth: 2
   invincibleDelay: 1
   sr: {fileID: 8582112115101910336}
   deathEffect: {fileID: 9177914990981062760, guid: e0fa01b379980524fbc08235f3180928, type: 3}

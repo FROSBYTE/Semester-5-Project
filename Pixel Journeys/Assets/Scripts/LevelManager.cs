@@ -35,7 +35,7 @@ public class LevelManager : MonoBehaviour
         PlayerMovement.instance.gameObject.SetActive(true);
         UIManager.Instance.unfadeScrren();
         PlayerMovement.instance.transform.position = CheckpointManager.instance.spawnPoint;
-        HealthSystem.instance.currentHealth = HealthSystem.instance.maxHealth;
+        HealthSystem.instance.currentHealth = HealthSystem.instance.respawnHealth;
         UIManager.Instance.heartcountDisplay();
     }
 }

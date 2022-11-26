@@ -18,6 +18,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] float fadeSpeed;
 
     [SerializeField] Text gemText;
+    [SerializeField] Text finalgemText;
 
     public bool isturningBlack, isturningfromBlack;
 
@@ -127,13 +128,11 @@ public class UIManager : MonoBehaviour
                 heart3.sprite = heartEmpty;
                 break;
         }
-
-        
-
     }
     public void gemUpdate()
     {
         gemText.text =LevelManager.instance.gemsCollected.ToString();
+        finalgemText.text = LevelManager.instance.gemsCollected.ToString();
     }
 
     public void fadeScreen()

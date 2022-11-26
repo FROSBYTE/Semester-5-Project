@@ -49,10 +49,18 @@ public class Pausemenu : MonoBehaviour
     {
         pausemenuUI.SetActive(false);
         Time.timeScale = 1f;
+        AudioManager.instance.audioSystem(17);
     }
     public void mainMenu()
     {
         SceneManager.LoadScene(0);
         Time.timeScale = 1f;
+        AudioManager.instance.audioSystem(17);
+    }
+    public void restartLevel()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        AudioManager.instance.audioSystem(17);
     }
 }
