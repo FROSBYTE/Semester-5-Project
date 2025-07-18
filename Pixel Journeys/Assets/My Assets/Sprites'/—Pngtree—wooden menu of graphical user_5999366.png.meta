@@ -36,7 +36,7 @@ TextureImporter:
       213: 3412308478223615185
     second: "\u2014Pngtree\u2014wooden menu of graphical user_5999366_10"
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -53,10 +53,12 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
+    flipGreenChannel: 0
   isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMipmapLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -95,6 +97,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  swizzle: 50462976
   cookieLightType: 0
   platformSettings:
   - serializedVersion: 3
@@ -107,6 +110,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -119,6 +123,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -131,6 +136,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
@@ -143,6 +149,7 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+    ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
@@ -389,9 +396,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-  spritePackingTag: 
+    nameFileIdTable:
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_0": 2443593294455524645
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_1": -892648768344280985
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_10": 3412308478223615185
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_2": 4812951518638847089
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_3": 6458577598718209748
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_4": -6724614432632902995
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_5": 36404199838338327
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_6": -7281133470421339280
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_7": 4400249217936685945
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_8": -1124548329589976414
+      "\u2014Pngtree\u2014wooden menu of graphical user_5999366_9": 7159610179392351191
+  mipmapLimitGroupName: 
   pSDRemoveMatte: 0
-  pSDShowRemoveMatteOption: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 
