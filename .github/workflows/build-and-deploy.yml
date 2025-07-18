@@ -11,10 +11,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Cache Unity
+      - name: Cache Unity folders
         uses: actions/cache@v4
         with:
           path: |
@@ -22,7 +22,7 @@ jobs:
             ~/.local/share/unity3d
           key: Library
 
-      - name: Build WebGL
+      - name: Build WebGL with Game CI
         uses: game-ci/unity-builder@v4
         env:
           UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
@@ -32,13 +32,14 @@ jobs:
           targetPlatform: WebGL
           projectPath: Pixel Journeys
 
-      - name: Install Butler
+      - name: Install Butler CLI
         run: |
-          curl -L -o butler.zip https://broth.itch.ovh/butler/dl/latest/linux-amd64/butler.zip
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
           unzip butler.zip -d butler
           chmod +x butler/butler
           sudo mv butler/butler /usr/local/bin/
 
-      - name: Deploy to Itch.io
+      - name: Deploy to Itch.io using Butler
         run: |
+          butler -V
           butler push "Pixel Journeys/build/WebGL" ${{ secrets.ITCH_IO_USERNAME }}/${{ secrets.ITCH_IO_GAME }}:webgl --api-key ${{ secrets.ITCH_IO_API_KEY }}
