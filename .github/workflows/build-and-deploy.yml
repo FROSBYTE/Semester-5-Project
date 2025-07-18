@@ -11,37 +11,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Cache
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.cache/unity3d
-          ~/.local/share/unity3d
-        key: Library
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cache/unity3d
+            ~/.local/share/unity3d
+          key: Library
 
-    - name: Build WebGL
-      uses: game-ci/unity-builder@v4
-      env:
-        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-      with:
-        targetPlatform: WebGL
-        projectPath: Pixel Journeys
+      - name: Build WebGL
+        uses: game-ci/unity-builder@v4
+        env:
+          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+        with:
+          targetPlatform: WebGL
+          projectPath: Pixel Journeys
 
-    - name: Zip WebGL Build
-      run: |
-        mkdir -p build/WebGL
-        zip -r build/WebGL/WebGL.zip "Pixel Journeys/build/WebGL"
-
-    - name: Upload to itch.io
-      uses: josephbmanley/butler-publish-itchio-action@v1.0.3
-      with:
-        api_key: ${{ secrets.ITCH_IO_API_KEY }}
-        user: ${{ secrets.ITCH_IO_USERNAME }}
-        game: ${{ secrets.ITCH_IO_GAME }}
-        files: build/WebGL/WebGL.zip
-        channel: webgl
+      - name: Upload to Itch.io
+        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
+        with:
+          api_key: ${{ secrets.ITCH_IO_API_KEY }}
+          user: ${{ secrets.ITCH_IO_USERNAME }}
+          game: ${{ secrets.ITCH_IO_GAME }}
+          files: "Pixel Journeys/build/WebGL"
+          channel: webgl
