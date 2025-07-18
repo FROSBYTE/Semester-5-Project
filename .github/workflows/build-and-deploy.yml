@@ -32,16 +32,6 @@ jobs:
           targetPlatform: WebGL
           projectPath: Pixel Journeys
 
-      - name: Debug: Locate WebGL build folder
-        run: |
-          echo "🔍 Searching for index.html..."
-          find . -name "index.html" || echo "❌ index.html not found"
-
-      - name: Debug: List WebGL build directory contents
-        run: |
-          echo "📁 Listing contents of build folder:"
-          ls -R "Pixel Journeys/build/WebGL" || echo "❌ Folder not found"
-
       - name: Install Butler CLI
         run: |
           curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
@@ -51,6 +41,5 @@ jobs:
 
       - name: Deploy to Itch.io using Butler
         run: |
-          echo "🚀 Deploying to Itch.io as ${{ secrets.ITCH_IO_USERNAME }}/${{ secrets.ITCH_IO_GAME }}:webgl"
           butler -V
-          butler push "Pixel Journeys/build/WebGL" ${{ secrets.ITCH_IO_USERNAME }}/${{ secrets.ITCH_IO_GAME }}:webgl --api-key ${{ secrets.ITCH_IO_API_KEY }} --verbose
+          butler push "Pixel Journeys/build/WebGL" ${{ secrets.ITCH_IO_USERNAME }}/${{ secrets.ITCH_IO_GAME }}:webgl --api-key ${{ secrets.ITCH_IO_API_KEY }}
