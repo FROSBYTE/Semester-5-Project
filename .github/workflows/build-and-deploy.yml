@@ -14,7 +14,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache
+      - name: Cache Unity
         uses: actions/cache@v4
         with:
           path: |
@@ -32,11 +32,13 @@ jobs:
           targetPlatform: WebGL
           projectPath: Pixel Journeys
 
-      - name: Upload to Itch.io
-        uses: josephbmanley/butler-publish-itchio-action@v1.0.3
-        with:
-          api_key: ${{ secrets.ITCH_IO_API_KEY }}
-          user: ${{ secrets.ITCH_IO_USERNAME }}
-          game: ${{ secrets.ITCH_IO_GAME }}
-          files: "Pixel Journeys/build/WebGL"
-          channel: webgl
+      - name: Install Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/dl/latest/linux-amd64/butler.zip
+          unzip butler.zip -d butler
+          chmod +x butler/butler
+          sudo mv butler/butler /usr/local/bin/
+
+      - name: Deploy to Itch.io
+        run: |
+          butler push "Pixel Journeys/build/WebGL" ${{ secrets.ITCH_IO_USERNAME }}/${{ secrets.ITCH_IO_GAME }}:webgl --api-key ${{ secrets.ITCH_IO_API_KEY }}
