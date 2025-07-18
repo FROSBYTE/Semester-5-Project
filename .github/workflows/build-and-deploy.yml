@@ -1,0 +1,46 @@
+name: Build and Deploy to Itch.io
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  buildAndDeploy:
+    name: Build WebGL and Deploy to Itch.io
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Cache
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.cache/unity3d
+          ~/.local/share/unity3d
+        key: Library
+
+    - name: Build WebGL
+      uses: game-ci/unity-builder@v4
+      env:
+        UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
+        UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+        UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      with:
+        targetPlatform: WebGL
+
+    - name: Upload to itch.io
+      uses: josephbmanley/butler-publish-itchio-action@v1.0.3
+      with:
+        api_key: ${{ secrets.ITCH_IO_API_KEY }}
+        user: ${{ secrets.ITCH_IO_USERNAME }}
+        game: ${{ secrets.ITCH_IO_GAME }}
+        files: build/WebGL/WebGL.zip
+        channel: webgl
+
+    - name: Zip WebGL Build
+      run: |
+        mkdir -p build/WebGL
+        zip -r build/WebGL/WebGL.zip build/WebGL/WebGL
